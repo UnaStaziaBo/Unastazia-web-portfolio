@@ -1,0 +1,7 @@
+import portrait from '../../assets/me.png'
+import { Header } from '../Header/Header'
+import { DragonGuide } from '../DragonGuide/DragonGuide'
+import { ProjectNavigation } from '../ProjectNavigation/ProjectNavigation'
+import './Hero.css'
+
+export function Hero() { return <section className="hero" id="top"><div className="hero-scene" aria-hidden="true"><div className="cathedral">♜</div></div><Header /><div className="hero-copy"><h1>I build digital<br />things that are<br />meant to be<br /><em>explored</em></h1><p>creative developer <b>•</b> problem solver<br />based in Slovakia</p><a href="#projects" className="scroll-button">Scroll to explore&nbsp; ↓</a></div><img className="portrait" src={portrait} alt="Anastasiia Borodina wearing a purple blazer" /><DragonGuide /><ProjectNavigation /><svg className="magic-trail" viewBox="0 0 700 410" preserveAspectRatio="none" aria-hidden="true"><defs><filter id="glow"><feGaussianBlur stdDeviation="5" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter></defs><path d="M90 40 C350 55 400 190 245 235 S160 355 500 400" /><path className="trail-light" d="M90 40 C350 55 400 190 245 235 S160 355 500 400" filter="url(#glow)" /><g className="stars"><circle cx="91" cy="40" r="5" /><circle cx="303" cy="95" r="4" /><circle cx="334" cy="177" r="5" /><circle cx="227" cy="265" r="4" /><circle cx="292" cy="347" r="5" /><circle cx="499" cy="400" r="4" /></g></svg></section> }
