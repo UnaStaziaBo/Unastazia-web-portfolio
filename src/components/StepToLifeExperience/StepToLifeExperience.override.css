@@ -1,5 +1,0 @@
-.stl-media { grid-template-rows: auto minmax(0, 1fr) auto; }
-
-.stl-media p { margin: 0; padding: .45rem .6rem .55rem; color: #59666b; font-size: .61rem; line-height: 1.35; }
-
-.stl-media p b { display: block; margin-bottom: .18rem; color: #3d507b; font-size: .67rem; }
