@@ -1,7 +1,61 @@
+import { useEffect, useRef, useState } from 'react'
+import cv from '../../assets/Anastasiia-Borodina-Software-Engineer-CV.pdf'
 import portrait from '../../assets/me.png'
 import { Header } from '../Header/Header'
-import { DragonGuide } from '../DragonGuide/DragonGuide'
+import { HeroGoldenThread } from '../HeroGoldenThread/HeroGoldenThread'
 import { ProjectNavigation } from '../ProjectNavigation/ProjectNavigation'
 import './Hero.css'
 
-export function Hero() { return <section className="hero" id="top"><div className="hero-scene" aria-hidden="true"><div className="cathedral">♜</div></div><Header /><div className="hero-copy"><h1>I build digital<br />things that are<br />meant to be<br /><em>explored</em></h1><p>creative developer <b>•</b> problem solver<br />based in Slovakia</p><a href="#projects" className="scroll-button">Scroll to explore&nbsp; ↓</a></div><img className="portrait" src={portrait} alt="Anastasiia Borodina wearing a purple blazer" /><DragonGuide /><ProjectNavigation /><svg className="magic-trail" viewBox="0 0 700 410" preserveAspectRatio="none" aria-hidden="true"><defs><filter id="glow"><feGaussianBlur stdDeviation="5" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter></defs><path d="M90 40 C350 55 400 190 245 235 S160 355 500 400" /><path className="trail-light" d="M90 40 C350 55 400 190 245 235 S160 355 500 400" filter="url(#glow)" /><g className="stars"><circle cx="91" cy="40" r="5" /><circle cx="303" cy="95" r="4" /><circle cx="334" cy="177" r="5" /><circle cx="227" cy="265" r="4" /><circle cx="292" cy="347" r="5" /><circle cx="499" cy="400" r="4" /></g></svg></section> }
+type IntroPhase = 'idle' | 'playing' | 'complete'
+
+function startsBelowHero() {
+  return typeof window !== 'undefined' && window.scrollY > 24
+}
+
+export function Hero() {
+  const initiallyComplete = startsBelowHero()
+  const [introPhase, setIntroPhase] = useState<IntroPhase>(() => initiallyComplete ? 'complete' : 'idle')
+  const [isCtaActive, setIsCtaActive] = useState(false)
+  const isCompleteRef = useRef(initiallyComplete)
+
+  useEffect(() => {
+    const completeIntro = () => {
+      if (isCompleteRef.current) return
+      isCompleteRef.current = true
+      setIntroPhase('complete')
+    }
+
+    if (isCompleteRef.current) return undefined
+
+    const startFrame = window.requestAnimationFrame(() => setIntroPhase('playing'))
+    const finishTimer = window.setTimeout(completeIntro, 2200)
+    const onScroll = () => {
+      if (window.scrollY > 12) completeIntro()
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.cancelAnimationFrame(startFrame)
+      window.clearTimeout(finishTimer)
+      window.removeEventListener('scroll', onScroll)
+    }
+  }, [])
+
+  return <section className="hero" id="top" data-journey-anchor="hero">
+    <div className="hero-scene" aria-hidden="true"><div className="cathedral">♜</div></div>
+    <Header />
+    <div className="hero-copy">
+      <p className="hero-role">Software Developer <span aria-hidden="true">✦</span> AI &amp; Data</p>
+      <h1>Programmer who enjoys<br />helping people by combining<br /><em className="hero-technology">technology</em> and <em className="hero-imagination">imagination</em>.</h1>
+      <p className="hero-availability"><span aria-hidden="true">●</span> Open to Software Engineer / Software Developer<br className="hero-availability-break" /> roles and internships</p>
+      <div className="hero-actions">
+        <a href="#projects" className="scroll-button" onPointerEnter={() => setIsCtaActive(true)} onPointerLeave={() => setIsCtaActive(false)} onFocus={() => setIsCtaActive(true)} onBlur={() => setIsCtaActive(false)}>View my work <span aria-hidden="true">↓</span></a>
+        <a className="cv-button" href={cv} download="Anastasiia-Borodina-Software-Engineer-CV.pdf" aria-label="Download Anastasiia Borodina's CV">Download CV <span aria-hidden="true">↓</span></a>
+        <a className="contact-link" href="#contact">Contact <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <img className="portrait" src={portrait} alt="Anastasiia Borodina wearing a purple blazer" />
+    <ProjectNavigation />
+    <HeroGoldenThread phase={introPhase} isCtaActive={isCtaActive} />
+  </section>
+}

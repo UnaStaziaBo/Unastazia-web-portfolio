@@ -23,7 +23,7 @@ export function ProjectChapter({ project, background }: Props) {
   if (project.id === 'aicognito') return <AiCognitoChapter project={project} background={background} />
   if (project.id === 'neda') return <NedaChapter project={project} background={background} />
 
-  return <article className={`project-chapter ${project.number === '07' ? 'project-finale' : ''}`} id={project.id} style={{ '--chapter-background': `url(${background})`, backgroundAttachment: project.number === '07' ? 'fixed' : undefined } as React.CSSProperties}>
+  return <article className={`project-chapter ${project.number === '07' ? 'project-finale' : ''}`} id={project.id} data-journey-anchor={project.id} style={{ '--chapter-background': `url(${background})`, backgroundAttachment: project.number === '07' ? 'fixed' : undefined } as React.CSSProperties}>
     <div className="chapter-content"><p className="chapter-number">{project.number}</p><p className="chapter-type">{project.type}</p><h2>{project.title}</h2><p className="chapter-description">{project.description}</p><ul>{project.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul><a href="#contact">View case study <span>↗</span></a></div>
     {project.id === 'ai-system' ? <AiSystemPortal title={project.title} /> : project.id === 'tmtp' ? <LivingCodex youtubeId="imx2xqSUQhk" title={project.title} logo={tmtpLogo} /> : project.id === 'mirror' ? <MirrorExperience /> : project.id === 'steptolife' ? <StepToLifeExperience /> : <div className="chapter-preview" aria-label={`${project.title} project preview`}><div className="preview-top"><i /><i /><i /></div><strong>{project.title}</strong><p>Project experience</p><div className="preview-lines"><i /><i /><i /></div></div>}
   </article>
@@ -68,7 +68,7 @@ function VolansSortChapter({ project, background }: Props) {
     activationTimer.current = window.setTimeout(() => setTrialState('active'), 700)
   }, [])
 
-  return <article className="project-chapter project-chapter--volans" id={project.id} style={{ '--chapter-background': `url(${background})` } as React.CSSProperties}>
+  return <article className="project-chapter project-chapter--volans" id={project.id} data-journey-anchor={project.id} style={{ '--chapter-background': `url(${background})` } as React.CSSProperties}>
     <div className="volans-chapter-marker"><p className="chapter-number">{project.number}</p><p className="chapter-type">{project.type}</p></div>
     <DragonTrial state={trialState}><LiveGamePreview title={project.title} playerUrl="https://html-classic.itch.zone/html/17040245/Volans-Sort-browser4/index.html?v=1782755762" externalUrl="https://unastaziabo.itch.io/volans-sort-puzzle-game" variant="dragon-trial" onPlayStateChange={handlePlayStateChange} /></DragonTrial>
     <div className="chapter-content volans-project-info"><h2>{project.title}</h2><p className="chapter-description">{project.description}</p><ul>{project.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul></div>
@@ -77,7 +77,7 @@ function VolansSortChapter({ project, background }: Props) {
 }
 
 function AiCognitoChapter({ project, background }: Props) {
-  return <article className="project-chapter project-chapter--aicognito" id={project.id} style={{ '--chapter-background': `url(${background})` } as React.CSSProperties}>
+  return <article className="project-chapter project-chapter--aicognito" id={project.id} data-journey-anchor={project.id} style={{ '--chapter-background': `url(${background})` } as React.CSSProperties}>
     <AiCognitoWorkbench />
     <div className="chapter-content aicognito-project-info"><p className="chapter-number">{project.number}</p><p className="chapter-type">{project.type}</p><h2>{project.title}</h2><p className="chapter-description">{project.description}</p><ul>{project.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul><p className="aicognito-try-hint"><span aria-hidden="true"></span></p></div>
     <a className="aicognito-case-link" href="#contact">View case study <span>↗</span></a>
@@ -85,7 +85,7 @@ function AiCognitoChapter({ project, background }: Props) {
 }
 
 function NedaChapter({ project, background }: Props) {
-  return <article className="project-chapter project-chapter--neda" id={project.id} style={{ '--chapter-background': `url(${background})` } as React.CSSProperties}>
+  return <article className="project-chapter project-chapter--neda" id={project.id} data-journey-anchor={project.id} style={{ '--chapter-background': `url(${background})` } as React.CSSProperties}>
     <NedaExperience />
     <div className="chapter-content neda-project-info"><p className="chapter-number">{project.number}</p><p className="chapter-type">{project.type}</p><h2>{project.title}</h2><p className="chapter-description">{project.description}</p><ul>{project.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul><p className="neda-ask-hint"><span aria-hidden="true"></span></p></div>
     <a className="neda-case-link" href="#contact">View case study <span>↗</span></a>

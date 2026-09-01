@@ -1,0 +1,120 @@
+.golden-journey {
+  position: absolute;
+  z-index: 6;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.golden-journey__svg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.golden-journey__path {
+  fill: none;
+  stroke: url(#golden-journey-gradient);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.golden-journey__path--base {
+  stroke-width: 1px;
+  opacity: .16;
+}
+
+.golden-journey__path--glow {
+  stroke-width: 4px;
+  opacity: .15;
+}
+
+.golden-journey__path--progress {
+  stroke-width: 1.45px;
+  opacity: .82;
+  transition: stroke-dashoffset 90ms linear;
+}
+
+.golden-journey__path-measure {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 1px;
+  pointer-events: none;
+}
+
+.golden-journey__light {
+  transform-origin: center;
+}
+
+.golden-journey__light-glow {
+  fill: #f4d46e;
+  opacity: .48;
+}
+
+.golden-journey__light-core {
+  fill: #fff5c4;
+  stroke: #f2ce60;
+  stroke-width: .65px;
+  filter: drop-shadow(0 0 4px #f2cf6680);
+  animation: golden-journey-pulse 4.4s ease-in-out infinite;
+}
+
+.golden-journey__destination {
+  fill: #fff0aa;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 15px;
+  opacity: .44;
+  filter: drop-shadow(0 0 5px #f1cb6870);
+  transition: opacity 320ms ease;
+}
+
+.golden-journey__dragon {
+  position: absolute;
+  z-index: 2;
+  width: clamp(68px, 7.3vw, 112px);
+  height: auto;
+  margin: -1.25rem 0 0 -1.75rem;
+  filter: drop-shadow(0 10px 11px #08130e82);
+  opacity: .9;
+  transform-origin: center;
+  animation: golden-journey-dragon-arrive 540ms ease both;
+}
+
+.golden-journey__dragon.is-facing-left {
+  animation: none;
+  opacity: .9;
+  transform: scaleX(-1);
+}
+
+@keyframes golden-journey-pulse {
+  50% { opacity: .9; transform: scale(1.08); }
+}
+
+@keyframes golden-journey-dragon-arrive {
+  from { opacity: 0; transform: translateY(8px) rotate(-2deg); }
+  to { opacity: .9; transform: translateY(0) rotate(0); }
+}
+
+@media (max-width: 800px) {
+  .golden-journey__path--base { opacity: .13; }
+  .golden-journey__path--glow { opacity: .1; }
+  .golden-journey__path--progress { stroke-width: 1.25px; opacity: .74; }
+  .golden-journey__dragon { display: none; }
+  .golden-journey__destination { font-size: 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .golden-journey__path--progress,
+  .golden-journey__destination,
+  .golden-journey__light-core,
+  .golden-journey__dragon {
+    animation: none;
+    transition: none;
+  }
+}
