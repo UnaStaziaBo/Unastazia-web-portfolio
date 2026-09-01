@@ -46,7 +46,7 @@ export function Hero() {
     <Header />
     <div className="hero-copy">
       <p className="hero-role">Software Developer <span aria-hidden="true">✦</span> AI &amp; Data</p>
-      <h1>Programmer who enjoys<br />helping people by combining<br /><em className="hero-technology">technology</em> and <em className="hero-imagination">imagination</em>.</h1>
+      <h1>Programmer who enjoys<br />helping people by<br />combining <em className="hero-technology">technology</em><br />and <em className="hero-imagination">imagination</em>.</h1>
       <p className="hero-availability"><span aria-hidden="true">●</span> Open to Software Engineer / Software Developer<br className="hero-availability-break" /> roles and internships</p>
       <div className="hero-actions">
         <a href="#projects" className="scroll-button" onPointerEnter={() => setIsCtaActive(true)} onPointerLeave={() => setIsCtaActive(false)} onFocus={() => setIsCtaActive(true)} onBlur={() => setIsCtaActive(false)}>View my work <span aria-hidden="true">↓</span></a>
