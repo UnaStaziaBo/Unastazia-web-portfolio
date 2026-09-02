@@ -1,11 +1,11 @@
-import portrait from '../../assets/me.png'
+import portrait from '../../assets/me.webp'
 import cv from '../../assets/Anastasiia-Borodina-Software-Engineer-CV.pdf'
-import background from '../../backgrounds/background_8.png'
+import background from '../../backgrounds/background_8.webp'
 import './ContactFooter.css'
 
 export function ContactFooter() {
   return <footer className="contact-footer" id="contact" data-journey-anchor="footer" style={{ '--footer-background': `url(${background})`, backgroundAttachment: 'fixed' } as React.CSSProperties}>
-    <img className="footer-portrait" src={portrait} alt="Anastasiia Borodina" />
+    <img className="footer-portrait" src={portrait} alt="Anastasiia Borodina" loading="lazy" decoding="async" />
     <section className="footer-invitation" id="about">
       <p>Let&apos;s create something<br />amazing together <span aria-hidden="true"></span></p>
       <p className="footer-availability"><span aria-hidden="true">●</span> Open to Software Engineer / Software Developer roles and internships</p>

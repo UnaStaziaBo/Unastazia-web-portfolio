@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
-import basicDragon from '../../assets/dragons/Dragon_basic.png'
-import dragon01 from '../../assets/dragons/Dragon_1.png'
-import dragon02 from '../../assets/dragons/Dragon_2.png'
-import dragon03 from '../../assets/dragons/Dragon_3.png'
-import dragon04 from '../../assets/dragons/Dragon_4.png'
-import dragon05 from '../../assets/dragons/Dragon_5.png'
-import dragon06 from '../../assets/dragons/Dragon_6.png'
-import dragon07 from '../../assets/dragons/Dragon_7.png'
+import basicDragon from '../../assets/dragon.webp'
+import dragon01 from '../../assets/dragons/Dragon_1.webp'
+import dragon02 from '../../assets/dragons/Dragon_2.webp'
+import dragon03 from '../../assets/dragons/Dragon_3.webp'
+import dragon04 from '../../assets/dragons/Dragon_4.webp'
+import dragon05 from '../../assets/dragons/Dragon_5.webp'
+import dragon06 from '../../assets/dragons/Dragon_6.webp'
+import dragon07 from '../../assets/dragons/Dragon_7.webp'
 import './DragonGuide.css'
 
 type ProjectDragon = {
@@ -162,7 +162,7 @@ export function DragonGuide() {
       <span className="project-dragon__orbit" />
       <span className="project-dragon__spark project-dragon__spark--one">✦</span>
       <span className="project-dragon__spark project-dragon__spark--two">✦</span>
-      <img className="project-dragon__image" src={dragon.asset} alt="" />
+      <img className="project-dragon__image" src={visibleDragons.has(dragon.id) ? dragon.asset : undefined} alt="" loading="lazy" decoding="async" />
     </div>)}
   </aside>
 }

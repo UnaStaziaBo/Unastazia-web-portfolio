@@ -64,7 +64,7 @@ export function AiCognitoWorkbench() {
     <div className="workbench-actions" role="group" aria-label="Try AiCognito modes">{modes.map((mode) => <button type="button" key={mode.name} aria-pressed={activeName === mode.name} onClick={() => selectMode(mode.name)}>{mode.name}</button>)}</div>
     <p className="workbench-hint">Choose how AiCognito helps</p>
     <div className="workbench-screen">
-      <img key={visible.name} src={visible.image} alt={visible.alt} loading={visibleName === 'Debug' ? 'eager' : 'lazy'} />
+      <img key={visible.name} src={visible.image} alt={visible.alt} loading="lazy" decoding="async" />
       {isProcessing && <div className="workbench-analysis" aria-hidden="true"><span>{active.loadingLabel}</span>{activeName === 'Debug' && <><i className="analysis-code-focus" /><i className="analysis-connector" /><b>Logic issue</b></>}{activeName === 'Voice' && <div className="analysis-wave"><i /><i /><i /><i /><i /></div>}</div>}
       {showSuccess && activeName === 'Debug' && <div className="workbench-sparks" aria-hidden="true"><span>{'{}'}</span><span>✦</span></div>}
       {showSuccess && activeName === 'Explain' && <span className="workbench-explain-spark" aria-hidden="true">&lt;/&gt;</span>}

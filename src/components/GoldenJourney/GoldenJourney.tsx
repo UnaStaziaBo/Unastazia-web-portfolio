@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import dragon from '../../assets/dragon.png'
+import dragon from '../../assets/dragon.webp'
 import './GoldenJourney.css'
 
 type Point = { x: number; y: number }
@@ -301,6 +301,6 @@ export function GoldenJourney() {
       <text ref={destinationRef} className="golden-journey__destination" x={finalAnchor.point.x} y={finalAnchor.point.y + 5} textAnchor="middle">✦</text>
       <path ref={pathRef} className="golden-journey__path-measure" d={route.d} />
     </svg>
-    {activeStop?.dragonStop && <img key={activeStop.id} className={`golden-journey__dragon ${activeStop.dragonFacing === 'left' ? 'is-facing-left' : ''}`} src={dragon} alt="" style={dragonStyle} />}
+    {activeStop?.dragonStop && <img key={activeStop.id} className={`golden-journey__dragon ${activeStop.dragonFacing === 'left' ? 'is-facing-left' : ''}`} src={dragon} alt="" style={dragonStyle} loading="lazy" decoding="async" />}
   </aside>
 }

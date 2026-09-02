@@ -18,7 +18,7 @@
   position: absolute;
   z-index: -2;
   inset: 0;
-  background: url('../../backgrounds/background_1.png') center / cover no-repeat;
+  background: var(--hero-background) center / cover no-repeat;
 }
 
 .cathedral { display: none; }

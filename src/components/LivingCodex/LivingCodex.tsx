@@ -46,7 +46,7 @@ export function LivingCodex({ logo, title, youtubeId }: LivingCodexProps) {
       <div className="codex-book__page-block" aria-hidden="true" />
       <div className="codex-book__spine" aria-hidden="true" />
       <div className="codex-book__cover">
-        <img src={logo} alt="TMTP logo featuring structured nodes, code and an open book" />
+        <img src={logo} alt="TMTP logo featuring structured nodes, code and an open book" loading="lazy" decoding="async" />
         <button type="button" onClick={openCodex}>Open book <b>→</b></button>
       </div>
     </div>
@@ -62,7 +62,7 @@ export function LivingCodex({ logo, title, youtubeId }: LivingCodexProps) {
       <div className="codex-page codex-page--demo">
         <button className="book-close" type="button" onClick={closeCodex}>Close ×</button>
         <span className="book-eyebrow">Project demo</span>
-        <img className="demo-logo" src={logo} alt="" aria-hidden="true" />
+        <img className="demo-logo" src={logo} alt="" aria-hidden="true" loading="lazy" decoding="async" />
         <h3>See TMTP<br />in action</h3>
         <p>Watch how the platform turns structured problems into a learning journey.</p>
         <button className="demo-preview" type="button" onClick={() => setState('video')}><span className="demo-preview__play" aria-hidden="true">▶</span><strong>Watch demo <b>→</b></strong></button>

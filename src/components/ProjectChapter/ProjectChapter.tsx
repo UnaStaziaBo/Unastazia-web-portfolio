@@ -4,7 +4,7 @@ import { KnowledgePortal, type PortalState } from '../KnowledgePortal/KnowledgeP
 import { LiveGamePreview } from '../LiveGamePreview/LiveGamePreview'
 import { DragonTrial, type TrialState } from '../DragonTrial/DragonTrial'
 import { LivingCodex } from '../LivingCodex/LivingCodex'
-import tmtpLogo from '../../assets/tmtp/tmtp-logo.png'
+import tmtpLogo from '../../assets/tmtp/tmtp-logo.webp'
 import { AiCognitoWorkbench } from '../AiCognitoWorkbench/AiCognitoWorkbench'
 import { MirrorExperience } from '../MirrorExperience/MirrorExperience'
 import { NedaExperience } from '../NedaExperience/NedaExperience'

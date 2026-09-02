@@ -7,8 +7,12 @@
   min-height: 420px;
   padding: 3rem clamp(1.5rem, 7vw, 8rem);
   overflow: hidden;
-  background: linear-gradient(90deg, #091b18e8, #0b201ad9), var(--footer-background) center / cover;
+  background: #091b18;
   color: #f8f0df;
+}
+
+.contact-footer.is-background-ready {
+  background: linear-gradient(90deg, #091b18e8, #0b201ad9), var(--footer-background) center / cover;
 }
 
 .contact-footer::before {

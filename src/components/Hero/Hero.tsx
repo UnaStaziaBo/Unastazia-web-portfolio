@@ -1,12 +1,23 @@
 import { useEffect, useRef, useState } from 'react'
 import cv from '../../assets/Anastasiia-Borodina-Software-Engineer-CV.pdf'
-import portrait from '../../assets/me.png'
+import portrait from '../../assets/me.webp'
+import heroBackground from '../../backgrounds/background_1.webp'
 import { Header } from '../Header/Header'
 import { HeroGoldenThread } from '../HeroGoldenThread/HeroGoldenThread'
 import { ProjectNavigation } from '../ProjectNavigation/ProjectNavigation'
 import './Hero.css'
 
 type IntroPhase = 'idle' | 'playing' | 'complete'
+
+if (typeof document !== 'undefined' && !document.querySelector('link[data-hero-background-preload]')) {
+  const preload = document.createElement('link')
+  preload.rel = 'preload'
+  preload.as = 'image'
+  preload.href = heroBackground
+  preload.setAttribute('fetchpriority', 'high')
+  preload.dataset.heroBackgroundPreload = ''
+  document.head.prepend(preload)
+}
 
 function startsBelowHero() {
   return typeof window !== 'undefined' && window.scrollY > 24
@@ -41,7 +52,7 @@ export function Hero() {
     }
   }, [])
 
-  return <section className="hero" id="top" data-journey-anchor="hero">
+  return <section className="hero" id="top" data-journey-anchor="hero" style={{ '--hero-background': `url(${heroBackground})` } as React.CSSProperties}>
     <div className="hero-scene" aria-hidden="true"><div className="cathedral">♜</div></div>
     <Header />
     <div className="hero-copy">
@@ -54,7 +65,7 @@ export function Hero() {
         <a className="contact-link" href="#contact">Contact <span aria-hidden="true">→</span></a>
       </div>
     </div>
-    <img className="portrait" src={portrait} alt="Anastasiia Borodina wearing a purple blazer" />
+    <img className="portrait" src={portrait} alt="Anastasiia Borodina wearing a purple blazer" fetchPriority="high" decoding="async" />
     <ProjectNavigation />
     <HeroGoldenThread phase={introPhase} isCtaActive={isCtaActive} />
   </section>
